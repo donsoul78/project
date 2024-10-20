@@ -6,24 +6,24 @@ const prisma = new PrismaClient();
 
 const app = express();
 
-app.use(session({
-    secret: 'PLEASEEEEE', // Replace with a strong secret
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false } // Set to true if using HTTPS
-  }));
+//app.use(session({
+    // secret: 'PLEASEEEEE', // Replace with a strong secret
+    // resave: false,
+    // saveUninitialized: false,
+    // cookie: { secure: false } // Set to true if using HTTPS
+ // }));
 
 // Middleware for parsing JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Setup session management (if needed)
-app.use(session({
-  secret: 'your_secret_key', // Change this to a secure random value
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }, // Set to true if using HTTPS
-}));
+// app.use(session({
+//   secret: 'your_secret_key', // Change this to a secure random value
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: false }, // Set to true if using HTTPS
+// }));
 
 // Root Route with login form
 app.get('/', (req: Request, res: Response) => {
@@ -214,7 +214,7 @@ app.post('/login', async (req: Request, res: Response) => {
             }else{
 // Send response with token
 console.log("log on is good")
-req.session.id = String(user.id);
+//req.session.id = String(user.id);
 //res.status(201).json({ message: 'log in is good.' });
 res.redirect('/users');
             }
@@ -503,6 +503,7 @@ app.post('/add-event', async (req: Request, res: Response) => {
           eventName,
           location,
           eventDate: new Date(eventDate),
+          userId: 1,
           // You can omit userId since you're not using authentication
         },
       });
