@@ -497,13 +497,13 @@ app.get('/map', (req: Request, res: Response) => {
 app.post('/add-event', async (req: Request, res: Response) => {
     const { eventName, location, eventDate } = req.body;
   
-  
     try {
       const newEvent = await prisma.event.create({
         data: {
           eventName,
           location,
           eventDate: new Date(eventDate),
+          // You can omit userId since you're not using authentication
         },
       });
   
@@ -513,6 +513,7 @@ app.post('/add-event', async (req: Request, res: Response) => {
       res.status(500).send('Error adding new event');
     }
   });
+  
   
 
 // Start server
