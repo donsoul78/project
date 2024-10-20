@@ -287,6 +287,7 @@ app.post('/add-user', async (req: Request, res: Response) => {
 });
 
 // Events map route with Google Maps integration
+
 app.get('/events-map', async (req: Request, res: Response) => {
     try {
       const events = await prisma.event.findMany({
@@ -446,6 +447,7 @@ app.get('/events-map', async (req: Request, res: Response) => {
       res.status(500).send('Error fetching events');
     }
   });
+  
   
 
 // Interactive map route with multiple pins
