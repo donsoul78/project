@@ -29,78 +29,118 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req: Request, res: Response) => {
     res.send(`
       <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login - Node.js App</title>
-        <style>
-          body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f2f5;
-          }
-          .login-container {
-            width: 300px;
-            padding: 40px;
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circles - Find your third place</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            margin: 20px auto;
+            background: linear-gradient(135deg, #a8e063, #56ab2f);
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        .login-card {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-          }
-          .login-container h2 {
-            text-align: center;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #8B4513;
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
             margin-bottom: 20px;
-          }
-          .login-container form {
-            display: flex;
-            flex-direction: column;
-          }
-          .login-container input {
-            padding: 10px;
+            font-size: 16px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .forgot-password {
+            text-align: right;
+            font-size: 14px;
+            color: #666;
             margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-          }
-          .login-container button {
-            padding: 10px;
-            background-color: #1890ff;
-            color: white;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .remember-me input {
+            margin-right: 8px;
+            transform: scale(1.2);
+        }
+        .sign-in-btn, .sign-up-btn {
+            width: 100%;
+            padding: 15px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
-          }
-          .login-container button:hover {
-            background-color: #40a9ff;
-          }
-          .signup-link {
-            text-align: center;
-            margin-top: 15px;
-          }
-          .signup-link a {
-            color: #1890ff;
-            text-decoration: none;
-          }
-          .signup-link a:hover {
-            text-decoration: underline;
-          }
-        </style>
-      </head>
-      <body>
-        <div class="login-container">
-          <h2>Login</h2>
-          <form action="/login" method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-          </form>
-          <div class="signup-link">
-            <p>Don't have an account? <a href="/signup">Sign Up</a></p>
-          </div>
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .sign-in-btn {
+            background-color: #8B4513;
+            color: white;
+        }
+        .sign-up-btn {
+            background-color: white;
+            color: #8B4513;
+            border: 2px solid #8B4513;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="login-card">
+            <h1>Circles</h1>
+            <p class="subtitle">Find your third place.</p>
+            <form action="/login" method="POST">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password</a>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember Me</label>
+                </div>
+                <button type="submit" class="sign-in-btn">Login</button>
+            </form>
+            <a href="/signup"><button type="button" class="sign-up-btn">Sign Up</button></a>
         </div>
-      </body>
-      </html>
+    </div>
+</body>
+</html>
     `);
   });
   
