@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "name": "project",
+    
+    "routes": [
+      { "src": "/(.*)", "dest": "/server2.ts" }
+    ]
+  }
+  
