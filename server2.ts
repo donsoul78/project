@@ -8,6 +8,8 @@ import path from 'path';
 const prisma = new PrismaClient();
 
 const app = express();
+app.use(express.static('public')); // Make sure your static files are served from the public folder
+
 
 app.set('view engine', 'ejs'); // Use EJS for templating
  app.set('views', path.join(__dirname, 'views')); // Set views directory
